@@ -23,9 +23,8 @@ public class CardScript : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData pointerEventData)
     {
-        this.gameObject.SetActive(false);
         HandTag.prevType = handType;
         PrevScript.IsChangePrev = true;
-        PLhandGene.PrevObj = this.gameObject;
+        PLhandGene.nowPrev = this.gameObject;
     }
 }

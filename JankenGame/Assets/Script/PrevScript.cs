@@ -5,6 +5,7 @@ using UnityEngine;
 public class PrevScript : MonoBehaviour
 {
     public static bool IsChangePrev = false;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +48,7 @@ public class PrevScript : MonoBehaviour
         }
     }
 
-    void PrevRes()
+    public void PrevRes()
     {
         this.gameObject.transform.Find("GUU").gameObject.SetActive(false);
         this.gameObject.transform.Find("CHOKI").gameObject.SetActive(false);

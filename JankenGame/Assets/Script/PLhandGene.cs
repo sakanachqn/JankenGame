@@ -9,11 +9,12 @@ public class PLhandGene : MonoBehaviour
     [SerializeField]
     private GameObject PLhandArea;
 
-    public static GameObject PrevObj = null;
+    public static GameObject nowPrev;
 
     private GameObject gobj;
     private Transform plArea;
     private int rnd;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +31,6 @@ public class PLhandGene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
