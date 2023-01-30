@@ -10,10 +10,17 @@ public class Fade : MonoBehaviour
 
     public static Fade instance;
 
-    private bool IsFadeNow = false;
+    private bool IsFadeEnd = false;
+
     private bool IsChangeScene = false;
 
+    public static bool IsFadeOut = false;
+    private bool IsFadeIn = false;
+
     public static bool StoG = false;
+    public static bool GtoR = false;  
+    public static bool RtoG = false;
+
     void Awake()
     {
         CheckInstance();
@@ -28,18 +35,34 @@ public class Fade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (StoG) StartCoroutine(StartToGame());
+        if(StoG) StartToGame();
+        if(GtoR) GameToRes();
+        if(RtoG) ResToGame();
     }
 
     void FadeIn()
     {
-        
+        FadeCanv.GetComponent<CanvasGroup>().alpha -= Time.deltaTime;
+        if(FadeCanv.GetComponent<CanvasGroup>().alpha <= 0)
+        {
+            IsFadeIn = false;
+            FadeCreate.fadecanvas.SetActive(false);
+            IsFadeEnd = true;
+        }
+
     }
+
 
     void FadeOut()
     {
-        
+        FadeCanv.GetComponent<CanvasGroup>().alpha += Time.deltaTime;
+        if(FadeCanv.GetComponent <CanvasGroup>().alpha >= 1)
+        {
+            IsFadeOut = false;
+            IsChangeScene = true;
+        }
     }
+
 
     void CheckInstance()
     {
@@ -53,8 +76,73 @@ public class Fade : MonoBehaviour
         }
     }
 
-    private IEnumerator StartToGame()
+    void StartToGame()
     {
+        if (IsFadeOut)
+        {
+            FadeOut();
+        }
+        if (IsChangeScene)
+        {
+            SceneManager.LoadScene("GameScene");
+            IsChangeScene = false;
+            IsFadeIn = true;
+        }
+        if (IsFadeIn)
+        {
+            FadeIn();
+        }
+        if(IsFadeEnd)
+        {
+            IsFadeEnd = false;
+            StoG = false;
+        }
+    }
 
+    void GameToRes()
+    {
+        if (IsFadeOut)
+        {
+            FadeOut();
+        }
+        if (IsChangeScene)
+        {
+            SceneManager.LoadScene("ResScene");
+            IsChangeScene = false;
+            IsFadeIn = true;
+        }
+        if (IsFadeIn)
+        {
+            FadeIn();
+        }
+        if (IsFadeEnd)
+        {
+            IsFadeEnd = false;
+            GtoR = false;
+            WR.winCount = 0;
+        }
+    }
+
+    void ResToGame()
+    {
+        if (IsFadeOut)
+        {
+            FadeOut();
+        }
+        if (IsChangeScene)
+        {
+            SceneManager.LoadScene("GameScene");
+            IsChangeScene = false;
+            IsFadeIn = true;
+        }
+        if (IsFadeIn)
+        {
+            FadeIn();
+        }
+        if (IsFadeEnd)
+        {
+            IsFadeEnd = false;
+            RtoG = false;
+        }
     }
 }

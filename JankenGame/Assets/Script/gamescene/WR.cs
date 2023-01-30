@@ -189,8 +189,10 @@ public class WR : MonoBehaviour
             winCount++;
             winPlus = false;
         }
+        PLhandGene.nowPrev = null;
+
     }
-    
+
 
 
 

@@ -18,7 +18,10 @@ public class SceneChange : MonoBehaviour
     {
         if(3 == WR.winCount)
         {
-            SceneManager.LoadScene("ResScene", LoadSceneMode.Single);
+            ResText.IsWin = true;
+            FadeCreate.fadecanvas.gameObject.SetActive(true);
+            Fade.GtoR = true;
+            Fade.IsFadeOut = true;
         }
     }
 }

@@ -18,6 +18,7 @@ public class startbutton : MonoBehaviour
         {
             FadeCreate.fadecanvas.gameObject.SetActive(true);
             Fade.StoG = true;
+            Fade.IsFadeOut = true;
         }
     }
 
