@@ -20,6 +20,7 @@ public class Fade : MonoBehaviour
     public static bool StoG = false;
     public static bool GtoR = false;  
     public static bool RtoG = false;
+    public static bool GtoS = false;
 
     void Awake()
     {
@@ -38,6 +39,7 @@ public class Fade : MonoBehaviour
         if(StoG) StartToGame();
         if(GtoR) GameToRes();
         if(RtoG) ResToGame();
+        if(GtoS) GameToTitle();
     }
 
     void FadeIn()
@@ -46,8 +48,9 @@ public class Fade : MonoBehaviour
         if(FadeCanv.GetComponent<CanvasGroup>().alpha <= 0)
         {
             IsFadeIn = false;
-            FadeCreate.fadecanvas.SetActive(false);
             IsFadeEnd = true;
+            this.gameObject.SetActive(false);
+
         }
 
     }
@@ -119,6 +122,30 @@ public class Fade : MonoBehaviour
         {
             IsFadeEnd = false;
             GtoR = false;
+            WR.winCount = 0;
+        }
+    }
+
+    void GameToTitle()
+    {
+        if (IsFadeOut)
+        {
+            FadeOut();
+        }
+        if (IsChangeScene)
+        {
+            SceneManager.LoadScene("TitleScene");
+            IsChangeScene = false;
+            IsFadeIn = true;
+        }
+        if (IsFadeIn)
+        {
+            FadeIn();
+        }
+        if (IsFadeEnd)
+        {
+            IsFadeEnd = false;
+            GtoS = false;
             WR.winCount = 0;
         }
     }

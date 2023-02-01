@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class startbutton : MonoBehaviour
 {
-    public static bool StartClick = false;
+    private bool StartClick = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +16,7 @@ public class startbutton : MonoBehaviour
     {
         if (StartClick)
         {
-            FadeCreate.fadecanvas.gameObject.SetActive(true);
+            Fade.instance.gameObject.SetActive(true);
             Fade.StoG = true;
             Fade.IsFadeOut = true;
         }

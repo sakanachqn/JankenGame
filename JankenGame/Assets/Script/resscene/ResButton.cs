@@ -18,7 +18,7 @@ public class ResButton : MonoBehaviour
 
     public void OnClick()
     {
-        FadeCreate.fadecanvas.gameObject.SetActive(true);
+        Fade.instance.gameObject.SetActive(true);
         Fade.RtoG = true;
         Fade.IsFadeOut = true;
     }

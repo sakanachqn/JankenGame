@@ -19,7 +19,7 @@ public class SceneChange : MonoBehaviour
         if(3 == WR.winCount)
         {
             ResText.IsWin = true;
-            FadeCreate.fadecanvas.gameObject.SetActive(true);
+            Fade.instance.gameObject.SetActive(true);
             Fade.GtoR = true;
             Fade.IsFadeOut = true;
         }
